@@ -7,9 +7,6 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/surveys">Go to surveys</a>
-    </nav>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     <section class="messages">
