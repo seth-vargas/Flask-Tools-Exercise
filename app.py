@@ -36,7 +36,7 @@ def start_test():
 @app.route('/questions/<int:question_number>')
 def show_question(question_number):
     current_question = satisfaction_survey.questions[question_number].question
-    choices = satisfaction_survey.questions[question_number].choices
+    choices = satisfaction_survey.questions[question_number].choices # no list comprehension necessary, the Questions class returns a list
 
     if question_number > len(session['responses']):
         flash("Invalid number entered in URL")
