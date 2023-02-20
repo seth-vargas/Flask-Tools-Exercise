@@ -26,7 +26,7 @@ def show_survey():
 @app.route('/start-test', methods=["POST"])
 def start_test():
     # cannot submit multiple forms
-    if not session['responses']:
+    if not session.get('responses'): # treat like a dictionary, use .get instead of obj[key] notation
         session['responses'] = []
         return redirect('questions/0')
     flash("You have already completed the test, thank you!")
@@ -36,7 +36,7 @@ def start_test():
 @app.route('/questions/<int:question_number>')
 def show_question(question_number):
     current_question = satisfaction_survey.questions[question_number].question
-    choices = [c for c in satisfaction_survey.questions[question_number].choices]
+    choices = satisfaction_survey.questions[question_number].choices
 
     if question_number > len(session['responses']):
         flash("Invalid number entered in URL")
